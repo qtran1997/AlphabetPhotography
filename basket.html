@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="shortcut icon" type="image/x-icon" href="Alphabet/S/S003_FD_CO.jpg" />
+
+        <title>
+            Make Your Name Sheek!        </title>
+        <link rel="stylesheet" type="text/css" href="AlphabetPhoto.css">
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <script src="https://js.stripe.com/v3/"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+        <style>
+
+
+        </style>
+    </head>
+
+
+
+    <body class="container-fluid">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="navbar-brand" href="index.html"><img id="topLogo" src="FinalSheekFramesLogo.png"></a>
+                </li>
+            </ul>
+
+
+            <div class="dropdown">
+                <button type="button" class="btn navbar-toggler navbar-toggler-icon" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                </button>
+                <div class="dropdown-menu dropdown-menu-left">
+                    <a class="dropdown-item" href="type%20a%20word.html">CREATE A WORD</a>
+                    <a class="dropdown-item" href="products.html">PRODUCTS</a>
+                    <a class="dropdown-item" href="contact.html">CONTACT</a>
+                    <a class="dropdown-item" href="basket.html">BASKET
+                        <div id="inBasket"><p>0</p></div></a>
+                </div>
+            </div>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <a class = "nav-link" href="type%20a%20word.html"> <li class = "nav-item">
+                        CREATE A WORD</li></a>
+                    <a class = "nav-link" href="products.html"><li class = "nav-item">
+                        PRODUCTS</li></a>
+                    <a class = "nav-link" href="contact.html"><li class = "nav-item">
+                        CONTACT</li></a>
+                    <a class = "nav-link" href="basket.html"><li class = "nav-item">
+                        BASKET
+                        <div id="inBasket"><p>0</p></div></li></a>
+
+                </ul>
+            </div>
+        </nav>
+
+        <div id="basketContainer" class="container-fluid">
+            <div id="basketBox">
+                <h3>Items In Your Basket</h3>
+                <a href="index.html" class="basketButtons">CONTINUE SHOPPING</a>
+                <br>
+                <button class="basketButtons" type="button" id="clear">CLEAR BASKET</button>
+                <br>
+            </div>
+            <div id="shippingBox">
+                <div id="shippingOption">
+                    <h3>Shipping Options</h3>
+                    Country:<br>
+                    <select>
+                        <option>United States</option>
+                    </select><br>
+                    State:<br>
+                    <select>
+                        <option>California</option>
+                    </select><br>
+                    Options available
+                    <form>
+                        <input name="shipping" id="standard" type="radio" value ="6"> <label for="standard"> Standard Shipping (5-10 Business Days) - $6.00</label><br>
+                        <input name="shipping" id="express" type="radio" value ="20"> <label for="express">Express Shipping (6-8 Business Days) - $20.00</label>
+                    </form>
+                </div>
+            </div>
+            <div id="basketSummaryBox">
+                <div>
+                    <h3>Total Summary</h3>
+                    <p>Total for items, shipping, taxes (if applicable) less any promotions or gift cards.</p>
+                    <input id="promoCode" type="text" placeholder="Promo Code">
+                </div>
+                <div id="moneySummary">
+                    <h6 id="price"><b>Item Total: </b>$0.00</h6>
+                    <h6 id="shippingCost"><b>Shipping: </b>Please Select </h6>
+                    <h6 id="promotionCost"><b>Promotion/Gift Code Credit: </b>$0.00</h6><br>
+                    <h3 id="totalCost"><b>Total: </b>$0.00</h3>
+                    <br>
+                    <br>
+
+                    <form id="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+                        <h4>Pay with Paypal!</h4>
+                        <input type="hidden" name="cmd" value="_xclick">
+                        <input id="paypalBusiness" type="hidden" name="business" value="XD">
+                        <input type="hidden" name="lc" value="US">
+                        <input type="hidden" name="item_name" value="Letter Frames">
+                        <input type="hidden" name="item_number" value="LF1">
+                        <input id="paypalPrice" type="hidden" name="amount" value="0.00">
+                        <input type="hidden" name="currency_code" value="USD">
+                        <input type="hidden" name="button_subtype" value="services">
+                        <input type="hidden" name="no_note" value="1">
+                        <input type="hidden" name="no_shipping" value="2">
+                        <input type="hidden" name="tax_rate" value="0.000">
+                        <input id="paypalShipping" type="hidden" name="shipping" value="0.00">
+                        <input type="hidden" name="bn" value="PP-BuyNowBF:btn_buynowCC_LG.gif:NonHosted">
+                        <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                        <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+                    </form>
+                    <form action="charge.php" method="POST" id="stripePay">
+                        <script
+                                src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                                data-key="pk_test_Zpooc1w4cUlZMOMsrHrs85V9"
+                                data-amount="999"
+                                data-name="Sheek Frames"
+                                data-description="Sheek Letter Frames"
+                                data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+                                data-locale="auto"
+                                data-zip-code="true">
+                        </script>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+        <script type = "text/javascript" src="js/allPages.js"></script>
+        <script type = "text/javascript" src="js/basket.js"></script>
+
+
+        <footer>
+            <div class="row">
+                <div class="offset-1 offset-sm-1 offset-md-3 offset-lg-3 offset-xl-3 col-3 col-sm-3 col-md-2 col-lg-2 col-xl-2">
+                    <h5>Customers</h5>
+                    <ul>
+                        <li>
+                            <a href="#"><p>Order Status</p></a>
+                        </li>
+                        <li>
+                            <a href="contact.html"><p>Contact Us</p></a>
+                        </li>
+                        <li>
+                            <a href="#"><p>FAQs</p></a>
+                        </li>
+                        <li>
+                            <a href="#"><p>Email Newsletter</p></a>
+                        </li>
+                        <li>
+                            <a href="#"><p>Terms and Conditions</p></a>
+                        </li>
+
+                    </ul>
+                </div>
+                <div class="col-4 col-sm-4 col-md-2 col-lg-2 col-xl-2">
+                    <h5>Media</h5>
+                    <ul>
+                        <li>
+                            <a href="#"><p>Photo Gallery</p></a>
+                        </li>
+                        <li>
+                            <a href="#"><p>Mailing Address</p></a>
+                        </li>
+                        <li>
+                            <a href="#"><p>About Us</p></a>
+                        </li>
+                        <li>
+                            <a href="#"><p>News</p></a>
+                        </li>
+                        <li>
+                            <a href="#"><p>Thank You</p></a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-3 col-sm-3 col-md-2 col-lg-2 col-xl-2">
+                    <h5>Connect</h5>
+                    <ul>
+                        <li>
+                            <a href="#"><p>Facebook</p></a>
+                        </li>
+                        <li>
+                            <a href="#"><p>Youtube</p></a>
+                        </li>
+                        <li>
+                            <a href="#"><p>Instagram</p></a>
+                        </li>
+                        <li>
+                            <a href="#"><p>Twitter</p></a>
+                        </li>
+                        <li>
+                            <a href="#"><p>Pinterest</p></a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+            <div style="width:100%; text-align:center"><p>Copyright &copy; Sheek Frames&reg;</p></div>
+        </footer>
+    </body>
+</html>
