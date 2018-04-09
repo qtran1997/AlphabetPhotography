@@ -233,7 +233,7 @@ window.addEventListener('load', function(){
             return null;
         }
         var letterArray = [];
-        var dir = "../../Alphabet/"
+        var dir = "./Alphabet/"
         dir += tmp.toUpperCase();
         dir += "/";
         //        console.log(dir);
