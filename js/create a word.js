@@ -79,7 +79,7 @@ window.addEventListener('load', function(){
         for(var i=0;i<tmpArray.length;i++)
         {
             var cardString = '<input class ="imageLetterSuggestion" type="image" src="./' + tmpArray[i] + '"></input>';
-            
+
             imageSuggestion.innerHTML += cardString;
         }
 
@@ -117,15 +117,17 @@ window.addEventListener('load', function(){
             {
 
                 var tmpArray = findLetter(input[i]);
+
+                //                console.log(tmpArray);
                 var randomNumber = Math.random()*tmpArray.length;
                 //                console.log(tmpArray[Math.floor(randomNumber)]);
                 imageFrame += `
 <input data-target="#modalBox" data-toggle="modal" data-backdrop="static" data-keyboard="false" class ="imageLetter" type="image" src="`+tmpArray[Math.floor(randomNumber)]+`">
 
 `;
-                
-                console.log(imageFrame);
-            console.log("DSJFHASDKLJFLSDAKJFSADLKJFSDA");
+
+                //                console.log(imageFrame);
+                //            console.log("DSJFHASDKLJFLSDAKJFSADLKJFSDA");
                 imageJSON.push(tmpArray[Math.floor(randomNumber)]);
                 //                console.log(imageJSON);
             }
@@ -231,21 +233,35 @@ window.addEventListener('load', function(){
             return null;
         }
         var letterArray = [];
-        var dir = "./Alphabet/"
+        var dir = "../../Alphabet/"
         dir += tmp.toUpperCase();
         dir += "/";
-        console.log(dir);
+        //        console.log(dir);
         $.ajax({
             url: dir,
             async:false,
             success: function(data){
                 $(data).find("a:contains(.jpg)").each(function(){
                     var imageName = $(this).attr("href");
+                    console.log(imageName);
+                    if(imageName.substr(1,2) != "Al")
+                    {
+                        imageName = "/Alphabet/" + imageName[0] + "/" + imageName;
+
+                    }
+
                     letterArray.push(imageName);
                     //                    console.log(letterArray);
+
                 });
+            },
+            failure: function(data){
+                console.log("AJAX ERROR")
+                //                console.log("This is: " + data);
             }
+
         });
+        console.log(letterArray);
         //            console.log(dir +": " + count);
         return letterArray;
     }
