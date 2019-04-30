@@ -34,6 +34,16 @@ public class PlayerStats : MonoBehaviour
 		money += amount;
 	}
 
+	public void DecreaseMoney(int amount)
+	{
+		money -= amount;
+	}
+
+	public void IncreaseHealth(int amount)
+	{
+		health += amount;
+	}
+
 	public void TakeDamage(int amount)
 	{
 		health -= amount;
